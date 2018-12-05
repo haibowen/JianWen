@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item app:showAsAction="ifRoom"
+    android:title="新闻类别">
+        <menu>
+
+    <group android:checkableBehavior="single">
+
+        <item
+                android:id="@+id/nav_first"
+                android:title="头条"
+                android:icon="@drawable/ic_whatshot_black_24dp"
+        />
+        <item
+                android:id="@+id/nav_second"
+                android:title="社会"
+                android:icon="@drawable/ic_account_balance_black_24dp"
+      />
+        <item
+                android:id="@+id/nav_third"
+                android:title="国内"
+        android:icon="@drawable/ic_airplay_black_24dp"/>
+        <item
+                android:id="@+id/nav_fourth"
+                android:title="娱乐"
+                android:icon="@drawable/ic_live_tv_black_24dp"
+        />
+        <item
+                android:id="@+id/nav_fivth"
+                android:title="体育"
+       android:icon="@drawable/ic_accessibility_black_24dp" />
+        <item
+                android:id="@+id/nav_six"
+                android:title="军事"
+                android:icon="@drawable/ic_add_location_black_24dp"
+        />
+        <item
+                android:id="@+id/nav_seven"
+                android:title="科技"
+        android:icon="@drawable/ic_android_black_24dp"/>
+        <item
+                android:id="@+id/nav_eight"
+                android:title="财经"
+        android:icon="@drawable/ic_attach_money_black_24dp"/>
+        <item
+                android:id="@+id/nav_nine"
+                android:title="时尚"
+        android:icon="@drawable/ic_beach_access_black_24dp"/>
+
+
+    </group>
+        </menu>
+    </item>
+
+    <item app:showAsAction="ifRoom"
+          android:title="设置">
+
+
+        <menu>
+            <item
+            android:id="@+id/zhuti"
+            android:title="主题"
+            android:icon="@drawable/ic_star_half_black_24dp">
+
+            </item>
+            <item
+            android:id="@+id/tuichu"
+            android:title="退出"
+            android:icon="@drawable/ic_power_settings_new_black_24dp"
+            >
+
+            </item>
+
+
+        </menu>
+    </item>
+</menu>
