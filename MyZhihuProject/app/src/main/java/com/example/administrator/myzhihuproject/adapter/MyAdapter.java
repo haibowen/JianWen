@@ -52,6 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
        }
        View view= LayoutInflater.from(context).inflate(R.layout.recyclerview_item,viewGroup,false);
        final  ViewHolder holder=new ViewHolder(view);
+       //点击事件
        holder.cardView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

@@ -4,16 +4,12 @@
 
     <item
             android:id="@+id/first"
-            android:title="first"
+            android:title="帮助"
             app:showAsAction="never"/>
     <item
             android:id="@+id/second"
-            android:title="second"
+            android:title="作者简介"
             app:showAsAction="never"
     />
-    <item
-            android:id="@+id/third"
-            android:title="third"
-            app:showAsAction="never"
-    />
+
 </menu>

@@ -1,9 +1,12 @@
 package com.example.administrator.myzhihuproject.activity;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +27,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +37,7 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.Toast;
+import com.example.administrator.myzhihuproject.internet.IsInterent;
 import com.example.administrator.myzhihuproject.internet.MyHttpUtil;
 import com.example.administrator.myzhihuproject.R;
 import com.example.administrator.myzhihuproject.adapter.MyAdapter;
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
 
+    private int mode;
 
 
     private List<String> mtitle=new ArrayList<>();
@@ -72,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mode=getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         //setTheme(R.style.nightTheme);
         setContentView(R.layout.activity_main);
         Toolbar toolbar=findViewById(R.id.toolbar);
@@ -88,8 +96,22 @@ public class MainActivity extends AppCompatActivity {
 
         }
         //数据获取
+        if (IsInterent.isConnect(this)){
+            GetInternetData(DataUrl.DEFAULTURL);
 
-        GetInternetData(DataUrl.DEFAULTURL);
+
+        }else {
+            SetInternet();
+        }
+
+
+
+        //侧滑的导航菜单的点击事件
+        navigationView.setCheckedItem(R.id.nav_first);
+        //navigationView.setItemIconTintList(null);
+        Event();
+
+
         //下拉刷新
         swipeRefreshLayout=findViewById(R.id.swipeRefresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
@@ -101,10 +123,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        //侧滑的导航菜单的点击事件
-        navigationView.setCheckedItem(R.id.nav_first);
-        //navigationView.setItemIconTintList(null);
-        Event();
+
 
         //侧滑的头像
         View nav_header=navigationView.inflateHeaderView(R.layout.nav_header);
@@ -260,12 +279,19 @@ public class MainActivity extends AppCompatActivity {
 
                         try {
                             Thread.sleep(2000);
+
+
+
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                myAdapter=new MyAdapter(mydata);
+                                myAdapter.notifyDataSetChanged();
+                                recyclerView.setAdapter(myAdapter);
+
                                 //myAdapter.notifyDataSetChanged();
                                 swipeRefreshLayout.setRefreshing(false);
 
@@ -289,6 +315,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (menuItem.getItemId()){
 
                     case R.id.nav_first:
+
 
                         GetInternetData(DataUrl.TOPURL);
 
@@ -332,6 +359,16 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.zhuti:
+                        if(mode == Configuration.UI_MODE_NIGHT_YES) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        } else if(mode == Configuration.UI_MODE_NIGHT_NO) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        } else {
+                            // blah blah
+                        }
+
+                        recreate();
+
 
 
                         break;
@@ -348,6 +385,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+    //网络设置
+    public  void  SetInternet(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("当前网络无连接，请连接网络");
+        builder.setNegativeButton("取消",null);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent=new Intent();
+                intent.setAction("android.settings.WIRELESS_SETTINGS");
+                startActivity(intent);
+            }
+        });
+        builder.create().show();
 
 
     }
@@ -370,13 +424,18 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.first:
-                Toast.makeText(this,"onclick",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage(R.string.helpdoc);
+                builder.setNegativeButton("取消",null);
+                builder.create().show();
 
                 break;
             case R.id.second:
+                AlertDialog.Builder builder1=new AlertDialog.Builder(MainActivity.this);
+                builder1.setMessage(R.string.author);
+                builder1.setNegativeButton("取消",null);
+                builder1.create().show();
 
-                break;
-            case R.id.third:
 
                 break;
 
@@ -448,11 +507,12 @@ public class MainActivity extends AppCompatActivity {
                     mimage.add(image);
 
 
-                GetDataSource(mtitle);
+
 
 
 
             }
+            GetDataSource(mtitle);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -488,6 +548,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                //讲数据显示在页面上
                 MyAdapter myAdapter=new MyAdapter(mydata);
                 myAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(myAdapter);

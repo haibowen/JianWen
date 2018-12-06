@@ -24,8 +24,9 @@
             android:id="@+id/username"
 
             android:layout_above="@id/email"
-            android:text="Welcome"
+            android:text="欢迎使用"
             android:layout_centerInParent="true"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+    />
 
 </RelativeLayout>
