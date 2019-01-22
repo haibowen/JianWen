@@ -28,10 +28,10 @@ app的截图如下
 
 </html>
 
+app下载链接
 
-附上app的下载链接：链接：https://pan.baidu.com/s/1C9Qf1pubSp4Oq4HY4f4v9g 
-提取码：9wd8 
-
+链接：https://pan.baidu.com/s/1zXq8QxrRFfxR-30GFFHoAQ 
+提取码：bs1e 
 
 
 
