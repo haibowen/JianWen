@@ -30,8 +30,8 @@ app的截图如下
 
 app下载链接
 
-链接：https://pan.baidu.com/s/1zXq8QxrRFfxR-30GFFHoAQ 
-提取码：bs1e 
+链接：https://pan.baidu.com/s/1oiIZzO79aV0caKMtxVfyCA 
+提取码：heyb 
 
 
 
