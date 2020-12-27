@@ -7,20 +7,20 @@ app的截图如下
 
 
 <table><tr>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-102105.jpg" width="320" height="657" border=0></td>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-102114.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kabd.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kwVA.jpg" width="320" height="657" border=0></td>
 </tr></table>
 
 <br/>
 <table><tr>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-102122.jpg" width="320" height="657" border=0></td>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-160628.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kUDH.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kNKe.jpg" width="320" height="657" border=0></td>
 </tr></table>
 <br/>
 
 <table><tr>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-160638.jpg" width="320" height="657" border=0></td>
-<td><img src="https://github.com/haibowen/JianWen/blob/master/Screenshot_20181206-160644.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kYvD.jpg" width="320" height="657" border=0></td>
+<td><img src="https://s3.ax1x.com/2020/12/27/r5kB5t.jpg" width="320" height="657" border=0></td>
 </tr></table>
 
 
